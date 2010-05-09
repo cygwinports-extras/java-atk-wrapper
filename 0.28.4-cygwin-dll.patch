@@ -1,0 +1,22 @@
+--- origsrc/java-atk-wrapper-0.28.4/configure.in	2010-02-28 23:14:57.000000000 -0600
++++ src/java-atk-wrapper-0.28.4/configure.in	2010-05-09 15:58:33.685859000 -0500
+@@ -33,7 +33,7 @@ PKG_CHECK_MODULES(JAW, [
+ 	gdk-2.0
+ ])
+ 
+-ATK_BRIDGE_LIB_NAME="`pkg-config --variable=libdir gtk+-2.0`/gtk-2.0/modules/libatk-bridge.so"
++ATK_BRIDGE_LIB_NAME="`pkg-config --variable=libdir gtk+-2.0`/gtk-2.0/modules/cygatk-bridge.dll"
+ AC_SUBST(ATK_BRIDGE_LIB_NAME)
+ 
+ # java wrapper
+--- origsrc/java-atk-wrapper-0.28.4/jni/src/Makefile.am	2010-02-28 23:12:26.000000000 -0600
++++ src/java-atk-wrapper-0.28.4/jni/src/Makefile.am	2010-05-09 15:36:49.048238000 -0500
+@@ -26,7 +26,7 @@ libatk_wrapper_la_CPPFLAGS = $(JNI_INCLU
+ 			     $(JAW_CFLAGS)\
+ 			     -DATK_BRIDGE_LIB_NAME=\"$(ATK_BRIDGE_LIB_NAME)\"
+ 
+-libatk_wrapper_la_LDFLAGS = -version-info $(LIB_ATK_WRAPPER_LT_VERSION)
++libatk_wrapper_la_LDFLAGS = -avoid-version -no-undefined
+ 
+ libatk_wrapper_la_LIBADD = $(JAW_LIBS)
+ 

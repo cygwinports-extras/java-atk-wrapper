@@ -1,0 +1,6 @@
+category: Java
+requires: libatk1.0_0 libgcc1 libglib2.0_0 libgtk2.0_0 libX11_6
+sdesc: "Java ATK-based accessibility implementation"
+ldesc: "Java ATK Wrapper is a implementation of ATK by using JNI 
+technic. It converts Java Swing events into ATK events, and sends these 
+events to ATK-Bridge."

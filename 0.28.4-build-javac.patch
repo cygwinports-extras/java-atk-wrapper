@@ -1,0 +1,21 @@
+--- origsrc/java-atk-wrapper-0.28.4/wrapper/org/GNOME/Accessibility/Makefile.am	2010-02-28 23:10:29.000000000 -0600
++++ src/java-atk-wrapper-0.28.4/wrapper/org/GNOME/Accessibility/Makefile.am	2010-05-09 15:50:44.053997500 -0500
+@@ -4,14 +4,15 @@ BUILD_CLASSES=$(patsubst $(srcdir)%,$(bu
+ 
+ EXTRA_DIST=$(JAVA_SRC) AtkWrapper.java.in
+ 
+-all-local: $(BUILD_CLASSES)
++all-local: class-stamp
+ 
+ AtkWrapper.java : AtkWrapper.java.in
+ 	sed -e "s;\@XPROP\@;${XPROP};g" \
+ 		< $< >$@
+ 
+-%.class : %.java
+-	CLASSPATH=$(top_srcdir)/wrapper $(JAVAC) -d $(top_builddir)/wrapper $<
++class-stamp : AtkWrapper.java $(JAVA_SRC)
++	$(JAVAC) -d $(top_builddir)/wrapper AtkWrapper.java $(JAVA_SRC)
++	touch $@
+ 
+ clean-local:
+ 	$(RM) *.class
