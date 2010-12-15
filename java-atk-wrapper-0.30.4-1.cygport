@@ -1,7 +1,7 @@
 ORIG_PN=${PN}
 inherit java gnome.org
 
-PATCH_URI="0.30.1-cygwin-dll.patch"
+PATCH_URI="0.30.4-cygwin-build.patch"
 
 CYGCONF_ARGS="--disable-static"
 MAKEOPTS+=" java_atk_wrapperdir=${JAVA_DIR} propertiesdir=${JAVA_HOME}/lib"
